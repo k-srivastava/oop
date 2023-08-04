@@ -3,8 +3,8 @@ package lab1;
 import java.util.Scanner;
 
 /**
- * (a) Write a method fact to accept one integer parameter and to find the factorial of a given number.
- * (b) Using fact, compute nCr in the main method.
+ * (a) Write a method fact to accept one integer parameter and to find the factorial of a given number. (b) Using fact,
+ * compute nCr in the main method.
  */
 public class Q3 {
     public static void main(String[] args) {

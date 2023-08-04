@@ -3,8 +3,8 @@ package lab1;
 import java.util.Scanner;
 
 /**
- * (a) Write a method reverse to accept once integer parameter and to return the reversed digits of accepted number.
- * (b) Using this method, check whether the inputted number is palindrome or not.
+ * (a) Write a method reverse to accept once integer parameter and to return the reversed digits of accepted number. (b)
+ * Using this method, check whether the inputted number is palindrome or not.
  */
 public class Q2 {
     public static void main(String[] args) {
