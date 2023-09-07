@@ -5,11 +5,31 @@ import java.util.Scanner;
 enum AccountType {
     Current,
     Savings,
-    Joint
+    Joint;
+
+    public static AccountType nextAccountType(Scanner scanner) throws IllegalArgumentException {
+        String accountType = scanner.nextLine();
+
+        return switch (accountType.toLowerCase()) {
+            case "current" -> AccountType.Current;
+            case "savings" -> AccountType.Savings;
+            case "joint" -> AccountType.Joint;
+
+            default -> throw new IllegalArgumentException("Unexpected value: " + accountType.toLowerCase());
+        };
+    }
+
+    public float computeInterestRate() {
+        return switch (this) {
+            case Current -> 0.03F;
+            case Savings -> 0.07F;
+            case Joint -> 0.09F;
+        };
+    }
 }
 
 class BankAccount {
-    private static final float INTEREST_RATE = 0.03F;
+    private static float interestRate;
     public String name;
     public long number;
     public AccountType type;
@@ -22,9 +42,11 @@ class BankAccount {
         this.number = number;
         this.type = type;
         this.balance = balance;
+
+        interestRate = type.computeInterestRate();
     }
 
-    public static float interestRate() { return INTEREST_RATE; }
+    public static float interestRate() { return interestRate; }
 
     public void deposit(float amount) {
         balance += amount;
@@ -68,7 +90,7 @@ public class Q3 {
         account.name = scanner.nextLine();
 
         System.out.print("Enter the account type: ");
-        account.type = nextAccountType(scanner);
+        account.type = AccountType.nextAccountType(scanner);
 
         System.out.print("Enter the account number: ");
         account.number = scanner.nextLong();
@@ -97,17 +119,5 @@ public class Q3 {
         System.out.println("Interest Rate: " + BankAccount.interestRate());
 
         scanner.close();
-    }
-
-    private static AccountType nextAccountType(Scanner scanner) throws IllegalArgumentException {
-        String accountType = scanner.nextLine();
-
-        return switch (accountType.toLowerCase()) {
-            case "current" -> AccountType.Current;
-            case "savings" -> AccountType.Savings;
-            case "joint" -> AccountType.Joint;
-
-            default -> throw new IllegalArgumentException("Unexpected value: " + accountType.toLowerCase());
-        };
     }
 }

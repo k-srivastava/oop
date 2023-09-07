@@ -45,5 +45,4 @@ class CustomArray<T> {
  * display to display the array contents.<p> 4. A method called search for an element in the array.<p> 5. A method
  * called compare which compares two IntArray objects for equality.
  */
-public class Q5 {
-}
+public class Q5 { }
